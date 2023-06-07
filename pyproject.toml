@@ -1,0 +1,75 @@
+[tool]
+
+[tool.poetry]
+name = "pycommons.collections"
+version = "0.0.0"
+homepage = "https://github.com/shashankrnr32/pycommons-collections"
+description = "Python Commons Collections"
+authors = ["Shashank Sharma <shashankrnr32@gmail.com>"]
+readme = "README.md"
+license = "Apache-2.0"
+classifiers = [
+    'License :: OSI Approved :: Apache Software License',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+]
+packages = [
+    { include = "pycommons" }
+]
+include = [
+    "LICENSE",
+    "pycommons/py.typed"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+importlib_metadata = "*"
+pycommons-lang = "*"
+
+[tool.poetry.dev-dependencies]
+mkdocs-material = ">7.0.0"
+mkdocstrings = { version = ">0.18", extras = ["python-legacy"] }
+mkdocs-awesome-pages-plugin = "*"
+markdown-include = "*"
+livereload = "*"
+poethepoet = "^0.20.0"
+
+pytest = ">=7.2.0"
+pytest-cov = "^2.10.1"
+
+pylint = "^2.6.0"
+black = "22.3.0"
+mypy = "0.960"
+
+[tool.black]
+line-length = 100
+
+[tool.pylint.reports]
+output-format = "colorized"
+reports = "y"
+msg-template = "{msg_id}:{line:3d},{column}: {obj}: {msg}"
+disable = "C0103, C0116, C0114, C0115, R0801, R0903"
+max-public-methods = 50
+max-args = 8
+max-locals = 20
+min-public-method = 0
+
+[tool.pytest.ini_options]
+addopts = "--cov=pycommons --cov-branch --cov-report term-missing --cov-report xml -vv --color=yes --cov-fail-under 10"
+python_files = "tests.py test_*.py *_tests.py *Test.py"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.mypy.overrides]
+module = "pycommons.lang"
+implicit_reexport = true
+
+[tool.poe.tasks]
+test = "pytest"
+lint = "pylint pycommons/ tests/"
+black = "black ."
+mypy = "mypy --strict --config-file=mypy.ini pycommons/"
+docs = "mkdocs serve"

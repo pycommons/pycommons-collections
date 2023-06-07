@@ -1,0 +1,89 @@
+---
+# Project Information
+site_name: PyCommons Lang
+site_author: Shashank Sharma
+site_description: Python Commons Lang
+remote_branch: gh-pages
+remote_name: origin
+site_url: https://pycommons.github.io/pycommons-collections
+strict: false
+
+# Repository information
+repo_name: pycommons/pycommons-collections
+repo_url: https://github.com/pycommons/pycommons-collections
+edit_uri: edit/master/docs/
+
+# Copyright
+copyright: Copyright &copy; 2020 Shashank Sharma
+
+extra_css: [ ]
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - markdown_include.include:
+      base_path: docs
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+      # Configuration
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tabs
+  language: en
+  base_url: https://github.com/pycommons/pycommons-collections
+  palette:
+    primary: 'white'
+# Footer
+extra:
+  config_override: false
+  doc_owner: Shashank Sharma
+  doc_owner_shortid: shashankrnr32@gmail.com
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/shashankrnr32
+      name: shashankrnr32 on GitHub
+
+plugins:
+  - search
+  - awesome-pages
+  - mkdocstrings:
+      watch:
+        - pycommons
+
+use_directory_urls: true
+
+# Page tree
+nav:
+  - PyCommons Lang:
+      - Home: index.md
+  - ...
+
