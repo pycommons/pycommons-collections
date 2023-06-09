@@ -57,7 +57,7 @@ max-locals = 20
 min-public-method = 0
 
 [tool.pytest.ini_options]
-addopts = "--cov=pycommons --cov-branch --cov-report term-missing --cov-report xml -vv --color=yes --cov-fail-under 1"
+addopts = "--cov=pycommons --cov-branch --cov-report term-missing --cov-report xml -vv --color=yes --cov-fail-under 65"
 python_files = "tests.py test_*.py *_tests.py *Test.py"
 
 [build-system]

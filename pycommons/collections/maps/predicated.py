@@ -49,7 +49,7 @@ class PredicatedOrderedMap(PredicatedMap[_K, _V], OrderedMap[_K, _V], Generic[_K
 
 class CompositePredicatedMap(IterableMap[_K, _V], Generic[_K, _V]):
     def __init__(self, predicate: BiPredicate[_K, _V], *args: Any, **kwargs: Any):
-        self._predicate = predicate
+        self._predicate: BiPredicate[_K, _V] = predicate
         super().__init__(*args, **kwargs)
 
     def __setitem__(self, key: _K, value: _V) -> None:
