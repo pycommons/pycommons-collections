@@ -1,13 +1,14 @@
-from typing import TypeVar, List, Optional, Iterable, Generic, Union
+from __future__ import annotations
+
+from typing import TypeVar, List, Iterable, Union, Set, Iterator
 
 _T = TypeVar("_T")
 
 
-class OrderedSet(set, Generic[_T]):
-
-    def __init__(self, iterable: Optional[Iterable[_T]] = None):
+class OrderedSet(Set[_T]):
+    def __init__(self, iterable: Iterable[_T] = ()):
         super().__init__(iterable)
-        self._order: List[_T] = list()
+        self._order: List[_T] = []
 
         _copy_set = set()
         for _set_item in iter(iterable):
@@ -25,10 +26,10 @@ class OrderedSet(set, Generic[_T]):
         if element in self:
             self._order.remove(element)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[_T]:
         return iter(self._order)
 
-    def __getitem__(self, item: Union[int, slice]):
+    def __getitem__(self, item: Union[int, slice]) -> Union[OrderedSet[_T], _T]:
         if isinstance(item, slice):
             return OrderedSet(self._order[item])
         return self._order[item]
