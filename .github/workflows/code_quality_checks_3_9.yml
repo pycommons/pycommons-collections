@@ -29,5 +29,5 @@ jobs:
       - name: Check format with black
         run: poetry run black --check pycommons/ tests/
       - name: Check type hinting with mypy
-        run: poetry run mypy --strict --config-file=mypy.ini pycommons/
+        run: poetry run mypy --namespace-packages -p pycommons.collections --strict --config-file=mypy.ini
 
