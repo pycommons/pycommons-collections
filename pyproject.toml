@@ -25,7 +25,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 importlib_metadata = "*"
-pycommons-lang = "*"
+pycommons-lang = "0.0.3"
 
 [tool.poetry.dev-dependencies]
 mkdocs-material = ">7.0.0"
@@ -71,5 +71,5 @@ implicit_reexport = true
 test = "pytest"
 lint = "pylint pycommons/ tests/"
 black = "black ."
-mypy = "mypy --strict --config-file=mypy.ini pycommons/"
+mypy = "mypy --namespace-packages -p pycommons.collections --strict --config-file=mypy.ini"
 docs = "mkdocs serve"
