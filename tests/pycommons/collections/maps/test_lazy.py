@@ -1,8 +1,9 @@
 from unittest import TestCase
 
-from pycommons.collections.maps import LazyMap, LazyOrderedMap
 from pycommons.lang.container.integer import IntegerContainer
 from pycommons.lang.function import Function
+
+from pycommons.collections.maps import LazyMap, LazyOrderedMap
 
 
 class TestLazyMap(TestCase):
@@ -12,6 +13,7 @@ class TestLazyMap(TestCase):
 
         self.assertEqual(2, lazy_map["key1"])
         self.assertEqual(4, lazy_map["key2"])
+        self.assertEqual(6, lazy_map["key3"])
         self.assertEqual(6, lazy_map["key3"])
 
 

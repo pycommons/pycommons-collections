@@ -1,4 +1,3 @@
-import typing
 from typing import TypeVar, Any, Generic
 
 from pycommons.collections.maps.iterable import IterableMap
@@ -13,9 +12,7 @@ class MultiValuedMap(IterableMap[_K, OrderedSet[_V]], Generic[_K, _V]):
         super().__init__(*args, **kwargs)
 
     def __setitem__(self, key: _K, value: _V) -> None:
-        if key in self and isinstance(self.data[key], OrderedSet):
+        if key in self:
             self.data[key].add(value)
-        elif key in self and not isinstance(self.data[key], OrderedSet):
-            self.data[key] = OrderedSet((typing.cast(_V, self.data[key]), value))
-        elif key not in self:
+        else:
             self.data[key] = OrderedSet((value,))
