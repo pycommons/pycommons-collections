@@ -18,3 +18,6 @@ class OrderedMap(IterableMap[_K, _V]):
             _str_list.append(f"{repr(map_iterator.key)}: {repr(map_iterator.value)}")
 
         return f"{{{', '.join(_str_list)}}}"
+
+    def __repr__(self) -> str:
+        return self.__str__()
