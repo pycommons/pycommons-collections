@@ -7,7 +7,7 @@ _K = TypeVar("_K")
 _V = TypeVar("_V")
 
 
-class BoundedMap(IterableMap[_K, _V], abc.ABC, Generic[_K, _V]):
+class BoundedMap(IterableMap[_K, _V], abc.ABC, Generic[_K, _V]):  # pragma: no cover
     @abc.abstractmethod
     def is_full(self) -> bool:
         ...
@@ -19,7 +19,7 @@ class BoundedMap(IterableMap[_K, _V], abc.ABC, Generic[_K, _V]):
 
 class FixedSizeMap(BoundedMap[_K, _V], Generic[_K, _V]):
     def is_full(self) -> bool:
-        return len(self) == self._max_size - 1
+        return len(self.data) == self._max_size
 
     def max_size(self) -> int:
         return self._max_size

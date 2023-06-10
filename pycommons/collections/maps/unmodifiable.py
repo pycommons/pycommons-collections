@@ -2,20 +2,20 @@ from __future__ import annotations
 
 from typing import TypeVar, Tuple, Generic, Any, Union
 
-from pycommons.collections.maps.iterable import MapIterator
+from pycommons.collections.maps.iterable import ItemsIterator
 from pycommons.collections.maps.sized import BoundedMap
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")
 
 
-class UnmodifiableMapIterator(MapIterator[_K, _V], Generic[_K, _V]):
+class UnmodifiableItemsIterator(ItemsIterator[_K, _V], Generic[_K, _V]):
     def set_value(self, val: _V) -> _V:
         raise TypeError(f"Cannot modify values in a {self.__class__.__name__}")
 
-    def __next__(self) -> UnmodifiableMapIterator[_K, _V]:
+    def __next__(self) -> UnmodifiableItemsIterator[_K, _V]:
         _next = next(self._items_iterator)
-        return UnmodifiableMapIterator(self._data, self._items_iterator, _next[0], _next[1])
+        return UnmodifiableItemsIterator(self._data, self._items_iterator, _next[0], _next[1])
 
 
 class UnmodifiableMap(BoundedMap[_K, _V], Generic[_K, _V]):
@@ -68,8 +68,8 @@ class UnmodifiableMap(BoundedMap[_K, _V], Generic[_K, _V]):
             return super().clear()
         raise TypeError(f"Cannot modify {self.__class__.__name__}")
 
-    def items_iterator(self) -> MapIterator[_K, _V]:
-        return UnmodifiableMapIterator(self.data, iter(self.data.items()))
+    def items_iterator(self) -> ItemsIterator[_K, _V]:
+        return UnmodifiableItemsIterator(self.data, iter(self.data.items()))
 
 
 class UnmodifiableLateInitMap(UnmodifiableMap[_K, _V], Generic[_K, _V]):
