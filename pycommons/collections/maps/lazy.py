@@ -1,8 +1,9 @@
 from typing import TypeVar, Generic, Any
 
+from pycommons.base.function import Function
+
 from pycommons.collections.maps.iterable import IterableMap
 from pycommons.collections.maps.ordered import OrderedMap
-from pycommons.lang.function import Function
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")

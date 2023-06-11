@@ -1,13 +1,14 @@
 import typing
 from unittest import TestCase
 
+from pycommons.base.function import Predicate, BiPredicate
+
 from pycommons.collections.maps import ItemsIterator
 from pycommons.collections.maps.predicated import (
     PredicatedMap,
     CompositePredicatedMap,
     PredicatedOrderedMap,
 )
-from pycommons.lang.function import Predicate, BiPredicate
 
 
 class TestPredicatedMap(TestCase):
