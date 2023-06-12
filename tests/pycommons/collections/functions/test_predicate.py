@@ -189,8 +189,8 @@ class TestExactCountPredicate(TestCase):
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
         self.assertEqual(
-            AllPredicate, type(exact_count_predicate._decorated)
-        )  # pylint: disable=W0212
+            AllPredicate, type(exact_count_predicate._decorated)  # pylint: disable=W0212
+        )
         self.assertTrue(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -208,8 +208,8 @@ class TestExactCountPredicate(TestCase):
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
         self.assertEqual(
-            AllPredicate, type(exact_count_predicate._decorated)
-        )  # pylint: disable=W0212
+            AllPredicate, type(exact_count_predicate._decorated)  # pylint: disable=W0212
+        )
         self.assertFalse(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -227,8 +227,8 @@ class TestExactCountPredicate(TestCase):
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
         self.assertEqual(
-            NeitherPredicate, type(exact_count_predicate._decorated)
-        )  # pylint: disable=W0212
+            NeitherPredicate, type(exact_count_predicate._decorated)  # pylint: disable=W0212
+        )
         self.assertTrue(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -246,8 +246,8 @@ class TestExactCountPredicate(TestCase):
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
         self.assertEqual(
-            NeitherPredicate, type(exact_count_predicate._decorated)
-        )  # pylint: disable=W0212
+            NeitherPredicate, type(exact_count_predicate._decorated)  # pylint: disable=W0212
+        )
         self.assertFalse(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
