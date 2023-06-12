@@ -1,8 +1,9 @@
 from typing import Generic, TypeVar, Any
 
+from pycommons.base.function import Predicate, BiPredicate
+
 from pycommons.collections.maps.iterable import IterableMap
 from pycommons.collections.maps.ordered import OrderedMap
-from pycommons.lang.function import Predicate, BiPredicate
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")

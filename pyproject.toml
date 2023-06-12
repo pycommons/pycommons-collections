@@ -25,7 +25,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 importlib_metadata = "*"
-pycommons-lang = "0.0.3"
+pycommons-lang = "0.0.4"
 typing_extensions = "4.6.3"
 
 [tool.poetry.dev-dependencies]

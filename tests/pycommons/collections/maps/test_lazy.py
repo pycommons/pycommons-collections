@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from pycommons.lang.container.integer import IntegerContainer
-from pycommons.lang.function import Function
+from pycommons.base.container import IntegerContainer
+from pycommons.base.function import Function
 
 from pycommons.collections.maps import LazyMap, LazyOrderedMap
 
