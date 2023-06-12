@@ -85,7 +85,7 @@ class NeitherPredicate(DecoratedPredicate[_T], Generic[_T]):
     """
 
     def __init__(self, predicates: Iterable[Predicate[_T]]):
-        super().__init__(predicates, PassingPredicate())
+        super().__init__(predicates, FailingPredicate())
 
     def test(self, value: _T) -> bool:
         """
