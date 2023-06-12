@@ -7,7 +7,8 @@ from pycommons.collections.functions.predicate import (
     AnyPredicate,
     NeitherPredicate,
     DecoratedPredicate,
-    ExactCountPredicate, ExactOnePredicate,
+    ExactCountPredicate,
+    ExactOnePredicate,
 )
 
 
@@ -120,16 +121,13 @@ class TestNeitherPredicate(TestCase):
 
 
 class TestExactCountPredicate(TestCase):
-
     def test_initialization_when_count_greater_than_number_of_predicates(self):
         predicate1: Predicate[int] = PassingPredicate()
         predicate2: Predicate[int] = PassingPredicate()
         predicate3: Predicate[int] = FailingPredicate()
         predicate4: Predicate[int] = FailingPredicate()
         with self.assertRaises(ValueError):
-            ExactCountPredicate(
-                (predicate1, predicate2, predicate3, predicate4), 8
-            )
+            ExactCountPredicate((predicate1, predicate2, predicate3, predicate4), 8)
 
     def test_passing_predicate(self):
         predicate1: Predicate[int] = PassingPredicate()
@@ -190,7 +188,9 @@ class TestExactCountPredicate(TestCase):
         )
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
-        self.assertEqual(AllPredicate, type(exact_count_predicate._decorated))  # pylint: disable=W0212
+        self.assertEqual(
+            AllPredicate, type(exact_count_predicate._decorated)
+        )  # pylint: disable=W0212
         self.assertTrue(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -207,7 +207,9 @@ class TestExactCountPredicate(TestCase):
         )
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
-        self.assertEqual(AllPredicate, type(exact_count_predicate._decorated))  # pylint: disable=W0212
+        self.assertEqual(
+            AllPredicate, type(exact_count_predicate._decorated)
+        )  # pylint: disable=W0212
         self.assertFalse(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -224,7 +226,9 @@ class TestExactCountPredicate(TestCase):
         )
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
-        self.assertEqual(NeitherPredicate, type(exact_count_predicate._decorated))  # pylint: disable=W0212
+        self.assertEqual(
+            NeitherPredicate, type(exact_count_predicate._decorated)
+        )  # pylint: disable=W0212
         self.assertTrue(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -241,7 +245,9 @@ class TestExactCountPredicate(TestCase):
         )
 
         self.assertIsNotNone(exact_count_predicate._decorated)  # pylint: disable=W0212
-        self.assertEqual(NeitherPredicate, type(exact_count_predicate._decorated))  # pylint: disable=W0212
+        self.assertEqual(
+            NeitherPredicate, type(exact_count_predicate._decorated)
+        )  # pylint: disable=W0212
         self.assertFalse(exact_count_predicate.test(1))
         self.assertTupleEqual(
             (predicate1, predicate2, predicate3, predicate4), exact_count_predicate.get_predicates()
@@ -249,7 +255,6 @@ class TestExactCountPredicate(TestCase):
 
 
 class TestExactOnePredicate(TestCase):
-
     def test_passing_predicate(self):
         predicate1: Predicate[int] = PassingPredicate()
         predicate2: Predicate[int] = FailingPredicate()
